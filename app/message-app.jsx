@@ -6,13 +6,14 @@ var MessageApp = React.createClass({
 
     render: function(){
         var messages = this.state.messages;
+
         var messageHTML = [];
         for(var i = 0; i < messages.length; i++){
-            messageHTML.push(<Message key={i} text={messages[i]} />);
+            messageHTML.push(<Message key={i} message={messages[i]}  />);
         }
         return(<div>
+            <MessageForm  getMessages={this.getMessages} />
             {messageHTML}
-            <MessageForm  getMessages={this.getMessages} />            
         </div>);
     },
 

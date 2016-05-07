@@ -1,10 +1,26 @@
 [
   {
     "username": "mary",
-    "password": "password"
+    "message": "This is a message"
   },
   {
     "username": "dana",
-    "password": "beau"
+    "message": "This is another message"
+  },
+  {
+    "username": "mary",
+    "message": "Love writing messages"
+  },
+  {
+    "username": "dana",
+    "message": "This is another boring message"
+  },
+  {
+    "username": "mary",
+    "message": "This is now old"
+  },
+  {
+    "username": "dana",
+    "message": "This is killing me"
   }
 ]

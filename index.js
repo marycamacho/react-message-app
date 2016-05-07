@@ -134,19 +134,35 @@
 	//the following is used to bring data into app
 	var userFile = __dirname + '/data/users.json';
 	var parsedUserData;
+	var messageFile = __dirname + '/data/messages.json';
+	var messages;
 
 	fs.readFile(userFile, 'utf8', function (err, data) {
 		if (err) {
 			console.log('Error: ' + err);
 			return;
 		}
-
 		parsedUserData = JSON.parse(data);
 
 
+
+		console.log(parsedUserData);
 	});
 
-	var messages = ["This is a message", "This is another message"];
+	function readMessages(callback) {
+		fs.readFile(messageFile, 'utf8', function (err, data) {
+			if (err) {
+				console.log('Error: ' + err);
+				return;
+			}
+			messages = JSON.parse(data);
+			console.log(messages);
+			//callback();
+		});
+	}
+	readMessages();
+	
+
 
 	/*Routes*/
 
@@ -163,6 +179,7 @@
 			res.send("[]");
 			return;
 		}
+		//res.send("Message Count" + messages.length);
 		res.send(JSON.stringify(messages));
 	});
 
@@ -211,7 +228,6 @@
 			if (logInUser(req.body.username, req.body.password)) {
 				req.session.username = req.body.username;
 				res.redirect("/");
-				return
 			}
 		}
 		res.redirect("/login");
