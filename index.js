@@ -131,18 +131,18 @@
 		saveUninitialized: true
 	}));
 
-	//the following is used to bring password data into app
-	var file = __dirname + '/data/users.json';
-	var parsedData;
+	//the following is used to bring data into app
+	var userFile = __dirname + '/data/users.json';
+	var parsedUserData;
 
-	fs.readFile(file, 'utf8', function (err, data) {
+	fs.readFile(userFile, 'utf8', function (err, data) {
 		if (err) {
 			console.log('Error: ' + err);
 			return;
 		}
 
-		parsedData = JSON.parse(data);
-		console.log(parsedData);
+		parsedUserData = JSON.parse(data);
+
 
 	});
 
@@ -184,7 +184,7 @@
 
 	function logInUser(username, password) {
 		//Need to identify incoming data and then loop through or compare to parsed data looking match
-		var foundUser = parsedData.find(function(user){
+		var foundUser = parsedUserData.find(function(user){
 
 			if (user.username === username) {
 				console.log(user);
