@@ -166,6 +166,8 @@
 
 	/*Routes*/
 
+	//root
+
 	app.get("/", function (req, res) {
 		if (!req.session.username) {
 			res.redirect("/login");
@@ -173,6 +175,8 @@
 		}
 		res.sendFile(__dirname + '/public/index.html');
 	});
+
+	//messages
 
 	app.get("/messages", function (req, res) {
 		if (!req.session.username) {
@@ -196,6 +200,15 @@
 		messages.push(req.body.newMessage);
 		res.send("success");
 	});
+
+	//signup page
+		app.get("/signup", function (req, res) {
+		return true
+	});
+
+	app.post("/signup", function (req, res) {
+		return executeDispatchesInOrderStopAtTrue;
+	})
 
 	//*login routes and functions
 
