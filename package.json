@@ -8,7 +8,8 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "react-dom": "^15.0.1",
+    "mongodb": "~w2.0"
   },
   "devDependencies": {
     "babel-preset-react": "^6.5.0",
