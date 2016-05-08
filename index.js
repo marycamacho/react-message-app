@@ -82,22 +82,22 @@
 			res.send("[]");
 			return;
 		}
-		//res.send("Message Count" + messages.length);
 		res.send(JSON.stringify(messages));
 	});
 
 
 	app.post("/messages", function (req, res) {
 		if (!req.session.username) {
-			res.send("error");
+			res.send("error: no logged in user");
 			return;
 		}
 		if (!req.body.newMessage) {
-			res.send("error");
+			res.send("error: no message in input");
 			return;
 		}
-		messages.push(req.body.newMessage);
-		res.send("success");
+		messages.push({"username": req.session.username, "message": req.body.newMessage});
+		res.send("success-message posted");
+
 	});
 
 	//signup page

@@ -15,7 +15,7 @@ var MessageForm = React.createClass({
             {newMessage: newMessage},
             function(response) {
                 console.log(response);
-                if (response == "success") {
+                if (response == "success-message posted") {
                     that.props.getMessages();
                 }
             }, 'text'
@@ -31,7 +31,7 @@ var MessageForm = React.createClass({
             <form onSubmit={this.submit}>
                 <input type="text" name="msg" id="msg"></input>
                 <input type="submit" name="send"></input>
-                
+
             </form>
         );
     }
