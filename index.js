@@ -81,8 +81,13 @@
 		if (!req.session.username) {
 			res.send("[]");
 			return;
+		} else {
+			dbConnection.collection('messages').find()
+				.toArray(function (err, messagesArr) {
+					assert.equal(err, null);
+					res.send(JSON.stringify(messagesArr));
+				})
 		}
-		res.send(JSON.stringify(messages));
 	});
 
 
