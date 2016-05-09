@@ -59,21 +59,7 @@
 
 	var mailer = nodemailer.createTransport(sgTransport(options));
 
-	//test nodemailer
-	var email = {
-		to: ['maryfcamacho@gmail.com'],
-		from: 'nodemailer@marycamacho.com',
-		subject: 'Hi there',
-		text: 'Awesome sauce',
-		html: '<b>Awesome sauce</b>'
-	};
 
-	mailer.sendMail(email, function(err, res) {
-		if (err) {
-			console.log(err)
-		}
-		console.log(res);
-	});
 
 	//used to read messages from internal json file (not mongo)
 	var messageFile = __dirname + '/data/messages.json';
@@ -98,7 +84,8 @@
 	//root
 
 	app.get("/", function (req, res) {
-		if (!req.session.username) {
+
+		if (!req.session.username)  {
 			res.redirect("/login");
 			return;
 		}
@@ -147,12 +134,30 @@
 	//adds new user to db and logs them in
 	app.post("/signup", function (req, res) {
 		if (req.body.username && req.body.password) {
-			var newUser = {"username": req.body.username, "message": req.body.password};
+			var newUser = {"username": req.body.username, "message": req.body.password, "email": req.body.email};
 			dbConnection.collection('users').insertOne(newUser, function(err, result){
-					if(err) {
-						res.send("error: something bad happened and you were not signed up")
+				if(err) {
+					res.send("error: something bad happened and you were not signed up")
+				}
+				//todo: send welcome email to user
+
+				var welcomeEmail = {
+					to: [req.body.email],
+					from: 'messagingapp@marycamacho.com',
+					subject: 'Account Activation',
+					text: 'Awesome sauce!  Please copy and paste this link and then login to activate your account: http://localhost:3000/account-confirm',
+					html: '<H2>Awesome sauce!</H2><div>Please click the following link and then login to confirm your account: <a href="http://localhost:3000/account-confirm">Confirm Your Account</a></div>'
+				};
+
+				mailer.sendMail(welcomeEmail, function(err, res) {
+					if (err) {
+						console.log(err)
 					}
-						req.session.username = req.body.username;
+					console.log(res);
+				});
+
+
+				req.session.username = req.body.username;
 						res.redirect("/");
 						console.log("user found");
 
@@ -169,15 +174,20 @@
 					assert.equal(err, null);
 					if (matchingUsers != null && matchingUsers.length == 1) {
 						console.dir(matchingUsers);
+						if (matchingUsers[0].status == false) {
+							res.redirect("/signup-incomplete");
+							console.log("account has not been verified");
+						}
 						if (matchingUsers[0].password === req.body.password) {
 							req.session.username = req.body.username;
 							res.redirect("/");
 							console.log("user found");
-						} else {
+						}
+						else {
 							res.redirect("/login");
 							console.log("bad password");
 						}
-					} else {
+					}	else {
 						res.redirect("/login");
 						console.log("no matching user");
 					}
