@@ -134,12 +134,12 @@
 	//adds new user to db and logs them in
 	app.post("/signup", function (req, res) {
 		if (req.body.username && req.body.password) {
-			var newUser = {"username": req.body.username, "password": req.body.password, "email": req.body.email};
+			var newUser = {"username": req.body.username, "password": req.body.password, "email": req.body.email, "status": false};
 			dbConnection.collection('users').insertOne(newUser, function(err, result){
 				if(err) {
 					res.send("error: something bad happened and you were not signed up")
 				}
-				//todo: send welcome email to user
+
 
 				var welcomeEmail = {
 					to: [req.body.email],
@@ -176,13 +176,17 @@
 					if (matchingUsers != null && matchingUsers.length == 1) {
 						console.dir(matchingUsers);
 						if (matchingUsers[0].status == false) {
-							res.redirect("/signup-incomplete");
+							res.redirect("/login");
+							
 							console.log("account has not been verified");
+							return
 						}
+
 						if (matchingUsers[0].password === req.body.password) {
 							req.session.username = req.body.username;
 							res.redirect("/");
 							console.log("user found");
+
 						}
 						else {
 							res.redirect("/login");
@@ -209,11 +213,16 @@
 					assert.equal(err, null);
 					if (matchingUsers != null && matchingUsers.length == 1) {
 						console.dir(matchingUsers);
-						if (matchingUsers[0].status == false) {
-							res.redirect("/signup-incomplete");
-							console.log("account has not been verified");
-						}
 						if (matchingUsers[0].password === req.body.password) {
+
+							//update user status when confirming account
+							var confirmedAcct = {$set: { "status": true }};
+							dbConnection.collection('users').updateOne({"username": req.body.username }, confirmedAcct, function(err, result) {
+								if (err) {
+									res.send("error: something bad happened and your account was not verified")
+								}
+							});
+
 							req.session.username = req.body.username;
 							res.redirect("/");
 							console.log("user found");
@@ -231,7 +240,7 @@
 	});
 
 	app.get("/first-login", function (req, res) {
-		res.sendFile(__dirname + '/public/login.html');
+		res.sendFile(__dirname + '/public/first-login.html');
 	});
 
 	/*Always put last because it is sequential*/
