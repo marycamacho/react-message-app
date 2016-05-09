@@ -45,6 +45,36 @@
 		dbConnection = db;
 	});
 
+	//sendgrid
+
+	var nodemailer = require('nodemailer');
+	var sgTransport = require('nodemailer-sendgrid-transport');
+
+	// api key https://sendgrid.com/docs/Classroom/Send/api_keys.html
+	var options = {
+		auth: {
+			api_key: config.sendgridKey
+		}
+	};
+
+	var mailer = nodemailer.createTransport(sgTransport(options));
+
+	//test nodemailer
+	var email = {
+		to: ['maryfcamacho@gmail.com'],
+		from: 'nodemailer@marycamacho.com',
+		subject: 'Hi there',
+		text: 'Awesome sauce',
+		html: '<b>Awesome sauce</b>'
+	};
+
+	mailer.sendMail(email, function(err, res) {
+		if (err) {
+			console.log(err)
+		}
+		console.log(res);
+	});
+
 	//used to read messages from internal json file (not mongo)
 	var messageFile = __dirname + '/data/messages.json';
 	var messages;
