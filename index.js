@@ -110,12 +110,24 @@
 	});
 
 	//signup page
-		app.get("/signup", function (req, res) {
-		return true
+	app.get("/signup", function (req, res) {
+		res.sendFile(__dirname + '/public/signup.html');
 	});
 
+	//adds new user to db and logs them in
 	app.post("/signup", function (req, res) {
-		return executeDispatchesInOrderStopAtTrue;
+		if (req.body.username && req.body.password) {
+			var newUser = {"username": req.body.username, "message": req.body.password};
+			dbConnection.collection('users').insertOne(newUser, function(err, result){
+					if(err) {
+						res.send("error: something bad happened and you were not signed up")
+					}
+						req.session.username = req.body.username;
+						res.redirect("/");
+						console.log("user found");
+
+				});
+		}
 	});
 
 	//*login routes and functions
