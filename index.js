@@ -134,7 +134,7 @@
 	//adds new user to db and logs them in
 	app.post("/signup", function (req, res) {
 		if (req.body.username && req.body.password) {
-			var newUser = {"username": req.body.username, "message": req.body.password, "email": req.body.email};
+			var newUser = {"username": req.body.username, "password": req.body.password, "email": req.body.email};
 			dbConnection.collection('users').insertOne(newUser, function(err, result){
 				if(err) {
 					res.send("error: something bad happened and you were not signed up")
@@ -145,8 +145,8 @@
 					to: [req.body.email],
 					from: 'messagingapp@marycamacho.com',
 					subject: 'Account Activation',
-					text: 'Awesome sauce!  Please copy and paste this link and then login to activate your account: http://localhost:3000/account-confirm',
-					html: '<H2>Awesome sauce!</H2><div>Please click the following link and then login to confirm your account: <a href="http://localhost:3000/account-confirm">Confirm Your Account</a></div>'
+					text: 'Awesome sauce!  Please copy and paste this link and then login to activate your account: http://localhost:3000/first-login.html',
+					html: '<H2>Awesome sauce!</H2><div>Please click the following link and then login to confirm your account: <a href="http://localhost:3000/first-login.html">Confirm Your Account</a></div>'
 				};
 
 				mailer.sendMail(welcomeEmail, function(err, res) {
@@ -156,12 +156,13 @@
 					console.log(res);
 				});
 
-
-				req.session.username = req.body.username;
+				res.redirect("/signup-thankyou.html");
+				
+				/*req.session.username = req.body.username;
 						res.redirect("/");
-						console.log("user found");
+						console.log("user found");*/
 
-				});
+			});
 		}
 	});
 
@@ -196,6 +197,40 @@
 	});
 
 	app.get("/login", function (req, res) {
+		res.sendFile(__dirname + '/public/login.html');
+	});
+
+	//* first login routes and functions
+
+	app.post("/first-login", function (req, res) {
+		if (req.body.username && req.body.password) {
+			dbConnection.collection('users').find({"username": req.body.username })
+				.toArray(function(err, matchingUsers) {
+					assert.equal(err, null);
+					if (matchingUsers != null && matchingUsers.length == 1) {
+						console.dir(matchingUsers);
+						if (matchingUsers[0].status == false) {
+							res.redirect("/signup-incomplete");
+							console.log("account has not been verified");
+						}
+						if (matchingUsers[0].password === req.body.password) {
+							req.session.username = req.body.username;
+							res.redirect("/");
+							console.log("user found");
+						}
+						else {
+							res.redirect("/login");
+							console.log("bad password");
+						}
+					}	else {
+						res.redirect("/login");
+						console.log("no matching user");
+					}
+				});
+		}
+	});
+
+	app.get("/first-login", function (req, res) {
 		res.sendFile(__dirname + '/public/login.html');
 	});
 
