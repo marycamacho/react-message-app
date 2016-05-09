@@ -100,9 +100,13 @@
 			res.send("error: no message in input");
 			return;
 		}
-		messages.push({"username": req.session.username, "message": req.body.newMessage});
-		res.send("success-message posted");
-
+		var newMessage = {"username": req.session.username, "message": req.body.newMessage};
+		dbConnection.collection('messages').insertOne(newMessage, function(err, result){
+			if(err) {
+				res.send("error: something bad happened and your message was not sent")
+			}
+			res.send("success-message posted");
+		})
 	});
 
 	//signup page
