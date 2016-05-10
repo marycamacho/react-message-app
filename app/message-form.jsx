@@ -20,10 +20,11 @@ var MessageForm = React.createClass({
                 }
             }, 'text'
         );
+        that.clearInput();
     },
 
     clearInput: function() {
-        $('msg').val('');
+        $('#msg').val('');
     },
 
     render: function() {

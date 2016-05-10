@@ -1,0 +1,31 @@
+Are you proud of our finished deliverables? If yes, what made them great? If no, what was wrong or missing?
+
+I'm super proud of the process more than the deliverable. I still have problems delivering code that has no design. That said, I feel like the work itself is good - it does what I intended. I could have worked longer and implemented more features. I am quite clear that my code is not as good as it could be - that it needs review and refactoring - but for now it gets it done.
+
+
+Did we get the results we wanted and did it make impact?
+
+The learning impact is in 2 areas for me - the first is the ease that I have developed in setting up environments on both Mac and PC. This used to stop me with my team and now I don't feel like I'm stuck - I trust that I can always pull the code down from a repo and setup the project on my own computer.
+
+The second area that I think went well is that I was able to push the requirements and build out features that were not requested but that had me learn things that are critical for the sorts of products my team builds.
+
+
+What was the single most frustrating part of the project?
+
+This was shockingly not a frustrating project at all. I hit my groove in it and found that things were flowing.
+
+How complete do you think the planning was before the actual commencement of work?  What could have been improved?
+
+Planning was key in how this project went. I spent more time researching how to do things before typing this time. For example, I reviewed many different tutorials on installing and configuring Mongo before I got started. Also, I used my white board to map out all the changes for example that would be required in the app to create the signup with email account validation.
+
+I also broke things down and did submits regularly as I had each thing working. I became very clear where the functionality needed to be and stopped confusing the files.
+
+How would you do things differently next time to make things better?
+
+I think breaking things out into smaller functions is the next step for me - then breaking things down into included files so I can better organize my project is what will be needed next.
+
+
+What was the most gratifying or professionally satisfying part of the project?
+
+I finally am feeling at ease in the code. I know where to look to find things and I can troubleshoot more effectively. I didn't get stopped by not having config values when changing from system to system. I didn't get stopped by environment setup, I didn't get confused by the different flavors of code required by the different parts of the app. This ease adds huge confidence. Finally - it was amazing to me that I installed, configured and tested successfully the SMTP integration to send email via the app in about 10 minutes. I kept being surprised that I was not getting errors.
+
