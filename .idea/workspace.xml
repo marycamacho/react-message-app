@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e64b4377-8967-4fc8-8e4f-289450102df7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/post-mortem" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/message-form.jsx" afterPath="$PROJECT_DIR$/app/message-form.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/post-mortem" afterPath="$PROJECT_DIR$/post-mortem" />
     </list>
     <ignored path="react-messaging.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,7 +58,7 @@
           <file leaf-file-name="message-app.jsx" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/message-app.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
+                <state relative-caret-position="378">
                   <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
                   <folding />
                 </state>
@@ -113,9 +110,9 @@
             </entry>
           </file>
           <file leaf-file-name="post-mortem" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/post-mortem">
+            <entry file="file://$PROJECT_DIR$/post-mortem">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1512">
+                <state relative-caret-position="1755">
                   <caret line="29" column="584" selection-start-line="29" selection-start-column="584" selection-end-line="29" selection-end-column="584" />
                   <folding />
                 </state>
@@ -277,6 +274,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="react-messaging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="react-messaging" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -294,11 +305,12 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\WorkingFiles\codecraft\react-messaging" />
+      <recent name="C:\WorkingFiles\codecraft\react-messaging\app" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\WorkingFiles\codecraft\react-messaging\app" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.mongo.js">
@@ -389,12 +401,12 @@
       <workItem from="1462458700799" duration="9252000" />
       <workItem from="1462562151108" duration="9871000" />
       <workItem from="1462640241854" duration="27359000" />
-      <workItem from="1462893519896" duration="5152000" />
+      <workItem from="1462893519896" duration="5227000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59465000" />
+    <option name="totallyTimeSpent" value="59540000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -407,10 +419,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-12" y="-12" width="2184" height="1394" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21263555" sideWeight="0.21965812" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09240924" sideWeight="0.78034186" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2696841" sideWeight="0.78034186" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991454" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21263555" sideWeight="0.21965812" order="0" side_tool="true" content_ui="tabs" />
@@ -754,7 +766,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/message-app.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
+        <state relative-caret-position="378">
           <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
           <folding />
         </state>
@@ -768,9 +780,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/post-mortem">
+    <entry file="file://$PROJECT_DIR$/post-mortem">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1512">
+        <state relative-caret-position="1755">
           <caret line="29" column="584" selection-start-line="29" selection-start-column="584" selection-end-line="29" selection-end-column="584" />
           <folding />
         </state>
